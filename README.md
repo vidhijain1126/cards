@@ -13,7 +13,9 @@ To run the first game:
     git clone https://github.com/vidhijain1126/cards.git
     ```
 2. Open `index.html` in any browser.
-3. ![image](https://github.com/vidhijain1126/cards/blob/main/card1.png)
+
+##Screenshot of Game 1
+![image](https://github.com/vidhijain1126/cards/blob/main/card1.png)
 
 ## Game 2: Sum of All Numbers is Greater Wins
 To run the second game, you have two options:
