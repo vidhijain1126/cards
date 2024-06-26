@@ -14,7 +14,7 @@ To run the first game:
     ```
 2. Open `index.html` in any browser.
 
-##Screenshot of Game 1
+## Screenshot of Game 1
 ![image](https://github.com/vidhijain1126/cards/blob/main/card1.png)
 
 ## Game 2: Sum of All Numbers is Greater Wins
