@@ -100,17 +100,19 @@ else{
 }
 }
 function winner() {
-    const obj = {
-        "player1": ranking(a),
-        "player2": ranking(a2),
-        "player3": ranking(a3),
-        "player4": ranking(a4),
-    }
-    const winObj = (Object.entries(obj).reduce((acc, item)=>{
-        return item[1] < acc[1] ? item : acc;
-    }));
-    const [key, value] = winObj;
-        return ([key, value]);
-}
+    const rankings = {
+      "Player1": ranking(a),
+      "Player2": ranking(a2),
+      "Player3": ranking(a3),
+      "Player4": ranking(a4),
+    };
+  
+    const highestRank = Math.min(...Object.values(rankings));
+    const winners = Object.entries(rankings)
+      .filter(([player, rank]) => rank === highestRank)
+      .map(([player]) => player);
+  
+    return winners;
+  }
 const winners = winner();
-console.log(`\nWinner is ${winners[0]}`);
+console.log(`\nWinner(s): ${winners.join(', ')}`);
