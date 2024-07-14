@@ -51,7 +51,7 @@
     const max = 13;
 
     function randomNum() {
-      return (Math.floor(Math.random() * (max - min + 1)) + min);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     function winner() {
@@ -60,57 +60,46 @@
         "Player2": Math.max(...b),
         "Player3": Math.max(...c),
         "Player4": Math.max(...d)
-      }
-      const winObj = (Object.entries(obj).reduce((acc, entry) => {
-        return entry[1] > acc[1] ? entry : acc;
-      }));
-      const [key, value] = winObj;
-      return ([key, value]);
+      };
+
+      const maxScore = Math.max(...Object.values(obj));
+      const winners = Object.entries(obj).filter(([player, score]) => score === maxScore);
+
+      return winners;
     }
 
     const a = [randomNum(), randomNum(), randomNum(), randomNum()];
-    const card1 = document.getElementsByClassName('card1')[0];
-    card1.textContent = `${a[0]}`;
-    const card2 = document.getElementsByClassName('card2')[0];
-    card2.textContent = `${a[1]}`;
-    const card3 = document.getElementsByClassName('card3')[0];
-    card3.textContent = `${a[2]}`;
-    const card4 = document.getElementsByClassName('card4')[0];
-    card4.textContent = `${a[3]}`;
+    document.getElementsByClassName('card1')[0].textContent = `${a[0]}`;
+    document.getElementsByClassName('card2')[0].textContent = `${a[1]}`;
+    document.getElementsByClassName('card3')[0].textContent = `${a[2]}`;
+    document.getElementsByClassName('card4')[0].textContent = `${a[3]}`;
 
     const b = [randomNum(), randomNum(), randomNum(), randomNum()];
-    const card1nd = document.getElementsByClassName('card1nd')[0];
-    card1nd.textContent = `${b[0]}`;
-    const card2nd = document.getElementsByClassName('card2nd')[0];
-    card2nd.textContent = `${b[1]}`;
-    const card3nd = document.getElementsByClassName('card3nd')[0];
-    card3nd.textContent = `${b[2]}`;
-    const card4nd = document.getElementsByClassName('card4nd')[0];
-    card4nd.textContent = `${b[3]}`;
+    document.getElementsByClassName('card1nd')[0].textContent = `${b[0]}`;
+    document.getElementsByClassName('card2nd')[0].textContent = `${b[1]}`;
+    document.getElementsByClassName('card3nd')[0].textContent = `${b[2]}`;
+    document.getElementsByClassName('card4nd')[0].textContent = `${b[3]}`;
 
     const c = [randomNum(), randomNum(), randomNum(), randomNum()];
-    const card1rd = document.getElementsByClassName('card1rd')[0];
-    card1rd.textContent = `${c[0]}`;
-    const card2rd = document.getElementsByClassName('card2rd')[0];
-    card2rd.textContent = `${c[1]}`;
-    const card3rd = document.getElementsByClassName('card3rd')[0];
-    card3rd.textContent = `${c[2]}`;
-    const card4rd = document.getElementsByClassName('card4rd')[0];
-    card4rd.textContent = `${c[3]}`;
+    document.getElementsByClassName('card1rd')[0].textContent = `${c[0]}`;
+    document.getElementsByClassName('card2rd')[0].textContent = `${c[1]}`;
+    document.getElementsByClassName('card3rd')[0].textContent = `${c[2]}`;
+    document.getElementsByClassName('card4rd')[0].textContent = `${c[3]}`;
 
     const d = [randomNum(), randomNum(), randomNum(), randomNum()];
-    const card1th = document.getElementsByClassName('card1th')[0];
-    card1th.textContent = `${d[0]}`;
-    const card2th = document.getElementsByClassName('card2th')[0];
-    card2th.textContent = `${d[1]}`;
-    const card3th = document.getElementsByClassName('card3th')[0];
-    card3th.textContent = `${d[2]}`;
-    const card4th = document.getElementsByClassName('card4th')[0];
-    card4th.textContent = `${d[3]}`;
+    document.getElementsByClassName('card1th')[0].textContent = `${d[0]}`;
+    document.getElementsByClassName('card2th')[0].textContent = `${d[1]}`;
+    document.getElementsByClassName('card3th')[0].textContent = `${d[2]}`;
+    document.getElementsByClassName('card4th')[0].textContent = `${d[3]}`;
 
     const winners = winner();
     const win = document.getElementsByClassName('winner')[0];
-    win.textContent = `\nWinner is ${winners[0]}`;
+
+    if (winners.length > 1) {
+      win.textContent = `Winners are ${winners.map(winner => winner[0]).join(', ')}`;
+    } else {
+      win.textContent = `Winner is ${winners[0][0]}`;
+    }
   </script>
 </body>
 
